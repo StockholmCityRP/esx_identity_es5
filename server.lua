@@ -219,8 +219,10 @@ end
 --==       Server Event Set Identity           ==
 --===============================================
 RegisterServerEvent('esx_identity:setIdentity')
-AddEventHandler('esx_identity:setIdentity', function(data)
+AddEventHandler('esx_identity:setIdentity', function(data, myIdentifiers)
   local identifier = GetPlayerIdentifiers(source)[1]
+  	local hasIdentity = true
+	TriggerClientEvent('esx_identity:identityCheck', myIdentifiers.playerid, hasIdentity)
     setIdentity(GetPlayerIdentifiers(source)[1], data, function(callback)
     if callback == true then
       print('Successfully Set Identity For ' .. identifier)
@@ -235,9 +237,19 @@ end)
 --===============================================
 AddEventHandler('es:playerLoaded', function(source)
   getIdentity(source, function(data)
+    local myID = {
+	  steamid = GetPlayerIdentifiers(source)[1],
+	  playerid = source
+	}
+	
     if data.firstname == '' then
+	  local hasIdentity = false
+	  TriggerClientEvent('esx_identity:saveID', source, myID)
+	  TriggerClientEvent('esx_identity:identityCheck', source, hasIdentity)
       TriggerClientEvent('esx_identity:showRegisterIdentity', source)
     else
+	  local hasIdentity = true
+	  TriggerClientEvent('esx_identity:identityCheck', source, hasIdentity)
       print('Successfully Loaded Identity For ' .. data.firstname .. ' ' .. data.lastname)
     end
   end)

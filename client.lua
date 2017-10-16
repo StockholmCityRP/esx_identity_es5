@@ -8,8 +8,10 @@
 --===============================================
 --==                 VARIABLES                 ==
 --===============================================
-local guiEnabled = false
-local myIdentity = {}
+local guiEnabled    = false
+local myIdentity    = {}
+local myIdentifiers = {}
+local hasIdentity   = true
 
 --===============================================
 --==                 VARIABLES                 ==
@@ -34,10 +36,30 @@ AddEventHandler("esx_identity:showRegisterIdentity", function()
 end)
 
 --===============================================
+--==           Show Registration               ==
+--===============================================
+RegisterNetEvent("esx_identity:saveID")
+AddEventHandler("esx_identity:saveID", function(data)
+  myIdentifiers = data
+end)
+
+--===============================================
+--==           Identity Check                  ==
+--===============================================
+RegisterNetEvent("esx_identity:identityCheck")
+AddEventHandler("esx_identity:identityCheck", function(data)
+  hasIdentity = data
+end)
+
+--===============================================
 --==              Close GUI                    ==
 --===============================================
 RegisterNUICallback('escape', function(data, cb)
-    EnableGui(false)
+  if hasIdentity == true then
+      EnableGui(false)
+  else
+    TriggerEvent("chatMessage", "^1[IDENTITY]", {255, 255, 0}, "An identity is required to play.")
+  end
 end)
 
 --===============================================
@@ -45,10 +67,14 @@ end)
 --===============================================
 RegisterNUICallback('register', function(data, cb)
   myIdentity = data
-  TriggerServerEvent('esx_identity:setIdentity', data)
-  EnableGui(false)
-  Wait (500)
-  TriggerEvent('esx_skin:openSaveableMenu')
+  if data.firstname ~= '' and data.lastname ~= '' and data.sex ~= '' and data.dateofbirth ~= '' and data.height ~= '' then
+    TriggerServerEvent('esx_identity:setIdentity', data, myIdentifiers)
+    EnableGui(false)
+    Wait (500)
+    TriggerEvent('esx_skin:openSaveableMenu', myIdentifiers.id)
+  else
+    TriggerEvent("chatMessage", "^1[IDENTITY]", {255, 255, 0}, "Please fill in all of the fields.")
+  end
 end)
 
 --===============================================
@@ -70,7 +96,7 @@ Citizen.CreateThread(function()
                 })
             end
 			
-			if IsControlJustPressed(1, 322) then
+			if IsControlJustPressed(1, 322) and hasIdentity == true then
 		      EnableGui(false)
 			end
         end
