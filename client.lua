@@ -11,7 +11,7 @@
 local guiEnabled    = false
 local myIdentity    = {}
 local myIdentifiers = {}
-local hasIdentity   = true
+local hasIdentity   = false
 
 --===============================================
 --==                 VARIABLES                 ==
