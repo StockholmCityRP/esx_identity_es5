@@ -11,7 +11,7 @@ NOTICE: THIS VERSION IS ONLY COMPATIBLE WITH ESSENTIALMODE5
 
 [INSTALLATION]
 
-1) Install To resources/[esx]/esx_identity
+1) Install To resources/[esx]/esx_identity << NOT esx_identity_es5
 `<< MUST BE INSTALLED HERE`
 2) Import esx_identity.sql in your database
 
@@ -24,16 +24,17 @@ Notice:
 start esx_identity
 ```
 4) If you are using esx_policejob or esx_society, you need to enable the following in the files config.lua:
-```Config.EnableESXIdentity          = true```
+```Config.EnableESXIdentity = true```
 
 ```
 Commands:
 
-/identityhelp
+/id
 /register
 /charlist
 /charselect 1,2,3
 /delchar 1,2,3
+/getID (ONLY FOR DEVS. If you restart the esx_identity resource while in-game please use this command.)
 ```
 
 Credits:
