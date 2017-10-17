@@ -11,11 +11,7 @@
 local guiEnabled = false
 local myIdentity = {}
 local myIdentifiers = {}
-<<<<<<< HEAD
 local hasIdentity = false
-=======
-local hasIdentity   = false
->>>>>>> 7059ba2937f99991948e15077d10056eb0e27be2
 
 --===============================================
 --==                 VARIABLES                 ==
