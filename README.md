@@ -41,5 +41,5 @@ Credits:
 `Script Created By: ArkSeyonet @Ark`
 
 Licensing:
-`This script uses GNU GPLv3`
+`This script uses a private license, and distribution/editing without my consent is prohibited. If you have a an old copy that still has the License, then you may do what you please with that version.'
 
