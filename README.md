@@ -1,7 +1,8 @@
 # fxserver-esx_identity
 FXServer ESX Identity
 
-NOTICE: THIS VERSION IS ONLY COMPATIBLE WITH ESSENTIALMODE5
+NOTICE:
+`This project is discontinued for now.`
 
 [REQUIREMENTS]
 
