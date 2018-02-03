@@ -1,4 +1,4 @@
-USE `essentialmode`;
+USE `fivem2337`;
 
 ALTER TABLE `users`
   ADD COLUMN `firstname` VARCHAR(50) NULL DEFAULT '',

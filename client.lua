@@ -110,8 +110,8 @@ Citizen.CreateThread(function()
 	
         if guiEnabled then
 
-          DisableControlAction(0, 1, guiEnabled) -- LookLeftRight
-          DisableControlAction(0, 2, guiEnabled) -- LookUpDown
+          --DisableControlAction(0, 1, guiEnabled) -- LookLeftRight
+          --DisableControlAction(0, 2, guiEnabled) -- LookUpDown
           DisableControlAction(0, 106, guiEnabled) -- VehicleMouseControlOverride			
           DisableControlAction(0, 142, true) -- MeleeAttackAlternate
           DisableControlAction(0, 30,  true) -- MoveLeftRight
